@@ -1,3 +1,6 @@
+# This code sample using onnxruntime packege by Microsoft (It's only provided for Linux)
+#
+
 import numpy as np
 import onnxruntime as rt
 from PIL import Image,ImageDraw
