@@ -6,12 +6,14 @@ import onnx
 import warnings
 from onnx_tf.backend import prepare
 import numpy as np
+from PIL import Image
 
 
 warnings.filterwarnings('ignore') # Ignore all the warning messages in this tutorial
 
 # https://github.com/onnx/models/tree/master/bvlc_googlenet
 model = onnx.load('bvlc_googlenet/model.onnx') # Load the ONNX file
+#model = onnx.load('inception_v2/model.onnx') # Load the ONNX file
 
 tf_model = prepare(model) # Import the ONNX model to Tensorflow
 
