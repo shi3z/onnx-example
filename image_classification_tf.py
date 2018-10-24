@@ -1,7 +1,12 @@
+#
+# Prepare onnx tensorflow package
+# $ git clone https://github.com/onnx/onnx-tensorflow.git && cd onnx-tensorflow
+# $ pip install -e .
 # Prepare pre-trained onnx model
 # $ wget https://s3.amazonaws.com/download.onnx/models/opset_8/bvlc_googlenet.tar.gz
 # $ tar zxvf bvlc_googlenet.tar.gz
 # Prepare input.jpg for inference 
+
 import onnx
 import warnings
 from onnx_tf.backend import prepare
