@@ -1,12 +1,7 @@
-#
-# Prepare onnx tensorflow package
-# $ git clone https://github.com/onnx/onnx-tensorflow.git && cd onnx-tensorflow
-# $ pip install -e .
 # Prepare pre-trained onnx model
 # $ wget https://s3.amazonaws.com/download.onnx/models/opset_8/bvlc_googlenet.tar.gz
 # $ tar zxvf bvlc_googlenet.tar.gz
 # Prepare input.jpg for inference 
-
 import onnx
 import warnings
 from onnx_tf.backend import prepare
@@ -14,7 +9,10 @@ import numpy as np
 
 
 warnings.filterwarnings('ignore') # Ignore all the warning messages in this tutorial
+
+# https://github.com/onnx/models/tree/master/bvlc_googlenet
 model = onnx.load('bvlc_googlenet/model.onnx') # Load the ONNX file
+
 tf_model = prepare(model) # Import the ONNX model to Tensorflow
 
 print(tf_model.inputs) # Input nodes to the model
