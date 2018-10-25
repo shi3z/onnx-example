@@ -1,6 +1,8 @@
 # Prepare pre-trained onnx model
 # $ wget https://s3.amazonaws.com/download.onnx/models/opset_8/bvlc_googlenet.tar.gz
 # $ tar zxvf bvlc_googlenet.tar.gz
+# $ wget https://s3.amazonaws.com/download.onnx/models/opset_9/vgg19.tar.gz
+# $ tar zxvf vgg19.tar.gz
 # Prepare input.jpg for inference 
 import onnx
 import warnings
@@ -12,8 +14,8 @@ from PIL import Image
 warnings.filterwarnings('ignore') # Ignore all the warning messages in this tutorial
 
 # https://github.com/onnx/models/tree/master/bvlc_googlenet
-model = onnx.load('bvlc_googlenet/model.onnx') # Load the ONNX file
-#model = onnx.load('inception_v2/model.onnx') # Load the ONNX file
+#model = onnx.load('bvlc_googlenet/model.onnx') # Load the ONNX file
+model = onnx.load('vgg19/model.onnx') # Load the ONNX file
 
 tf_model = prepare(model) # Import the ONNX model to Tensorflow
 
@@ -1029,7 +1031,10 @@ label = {0: 'tench, Tinca tinca',
 	 998: 'ear, spike, capitulum',
 	 999: 'toilet tissue, toilet paper, bathroom tissue'}
 
-print(label[Y.argmax()],Y[Y.argmax()])
+indices= np.argpartition(Y, -5)[-5:]
+
+for i in indices:
+	print(label[i],Y[i])
 
 
 
